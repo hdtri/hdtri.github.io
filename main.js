@@ -18,7 +18,7 @@ socket.on('DANH_SACH_ONLINE', arrUserInfo => {
 socket.on('DANG_KY_THAT_BAI', () => alert('Vui long chon username khac'));
 
 function openStream() {
-	const config ={ audio: false, video: true};
+	const config ={ audio: true, video: true};
 	return navigator.mediaDevices.getUserMedia(config);
 }
 
