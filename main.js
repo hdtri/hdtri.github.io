@@ -1,5 +1,23 @@
 const socket = io('https://serwebrtctrihd.herokuapp.com/');
 $('#div-chat').hide();
+let customConfig;
+$.ajax({
+  url: "https://service.xirsys.com/ice",
+  data: {
+    ident: "trihd",
+    secret: "aaa34290-c584-11e8-adb8-85894fb2751c",
+    domain: "global.xirsys.net/_turn/MyFirstApp",
+    application: "default",
+    room: "default",
+    secure: 1
+  },
+  success: function (data, status) {
+    // data.d is where the iceServers object lives
+    customConfig = data.d;
+    console.log(customConfig);
+  },
+  async: false
+});
 socket.on('DANH_SACH_ONLINE', arrUserInfo => {
 	$('#div-chat').show();
 	$('#div-dang-ky').hide();
@@ -29,7 +47,13 @@ function playStream(idVideoTag, stream) {
 }
 //openStream ()
 //.then(stream => playStream('localStream', stream));
-const peer = new Peer({key: 'peerjs', host: 'webrtctrihd1407.herokuapp.com', secure: true, port: 443});
+const peer = new Peer({
+	key: 'peerjs',
+	host: 'webrtctrihd1407.herokuapp.com',
+	secure: true,
+	port: 443,
+	config: customConfig
+});
 
 peer.on('open', id => {
 	$('#my-peer').append(id);
