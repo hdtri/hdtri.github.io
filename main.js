@@ -40,7 +40,7 @@ var options = {
       },
       ua: {}
     };
-var simple = new SIP.Web.Simple(options);
+// var simple = new SIP.Web.Simple(options);
 var userAgent = new SIP.UA({
   uri: '1004@192.168.0.151',
   transportOptions: {
