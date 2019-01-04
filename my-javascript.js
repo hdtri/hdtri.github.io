@@ -71,7 +71,7 @@ function createSimple(callerURI, displayName, target, remoteVideo, buttonId) {
             userAgentString: SIP.C.USER_AGENT + " sipjs.com"
         }
     };
-    var simple = new SIP.WebRTC.Simple(configuration);
+    var simple = new SIP.Web.Simple(configuration);
 
     // Adjust the style of the demo based on what is happening
     simple.on('ended', function() {
