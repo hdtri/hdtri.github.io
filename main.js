@@ -41,4 +41,12 @@ var options = {
       ua: {}
     };
 var simple = new SIP.Web.Simple(options);
+var userAgent = new SIP.UA({
+  uri: '1004@192.168.0.151',
+  transportOptions: {
+    wsServers: ['wss://trihdrtc.tk:7443']
+  },
+  authorizationUser: '1004',
+  password: '1234'
+});
 simple.call('1005@192.168.0.151');
