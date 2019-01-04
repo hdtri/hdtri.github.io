@@ -14,10 +14,10 @@ var configuration = {
 
 var ua = new JsSIP.UA(configuration);
 
-/* ua.start();
+ua.start();
 
 // Register callbacks to desired call events
-var eventHandlers = {
+/* var eventHandlers = {
   'progress': function(e) {
     console.log('call is in progress');
   },
