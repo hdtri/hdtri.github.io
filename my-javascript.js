@@ -15,7 +15,6 @@ var configuration = {
 var ua = new JsSIP.UA(configuration);
 
 ua.start();
-
 // Register callbacks to desired call events
 /* var eventHandlers = {
   'progress': function(e) {
