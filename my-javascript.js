@@ -1,10 +1,7 @@
-/*var views = {
+var views = {
   'selfView':   document.getElementById('my-video'),
   'remoteView': document.getElementById('peer-video')
 };
-const mediaStreamConstraints = {
-  video: true,
-};*/
 var socket = new JsSIP.WebSocketInterface('wss://trihdrtc.tk:7443');
 var configuration = {
   sockets  : [ socket ],
@@ -15,27 +12,8 @@ var configuration = {
 var ua = new JsSIP.UA(configuration);
 
 ua.start();
-ua.call('sip:1001@192.168.0.151');
-// Register callbacks to desired call events
-/* var eventHandlers = {
-  'progress': function(e) {
-    console.log('call is in progress');
-  },
-  'failed': function(e) {
-    console.log('call failed with cause: '+ e.data.cause);
-  },
-  'ended': function(e) {
-    console.log('call ended with cause: '+ e.data.cause);
-  },
-  'confirmed': function(e) {
-    console.log('call confirmed');
-  }
-};
-
 var options = {
-  'eventHandlers'    : eventHandlers,
   'mediaConstraints' : { 'audio': true, 'video': true }
 };
+ua.call('sip:1001@192.168.0.151', options);
 
-var session = ua.call('sip:1001@192.168.0.151', options);
-*/
