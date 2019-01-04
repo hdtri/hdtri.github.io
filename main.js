@@ -1,4 +1,4 @@
-'use strict';
+/*'use strict';
 
 // On this codelab, you will be streaming only video (video: true).
 const mediaStreamConstraints = {
@@ -25,6 +25,20 @@ function handleLocalMediaStreamError(error) {
 
 // Initializes media stream.
 navigator.mediaDevices.getUserMedia(mediaStreamConstraints)
-  .then(gotLocalMediaStream).catch(handleLocalMediaStreamError);
+  .then(gotLocalMediaStream).catch(handleLocalMediaStreamError); */
+///********************
+var options = {
+      media: {
+        local: {
+          video: document.getElementById('localVideo')
+        },
+        remote: {
+          video: document.getElementById('remoteVideo'),
+          // This is necessary to do an audio/video call as opposed to just a video call
+          audio: document.getElementById('remoteVideo')
+        }
+      },
+      ua: {}
+    };
 var simple = new SIP.Web.Simple(options);
 simple.call('welcome@onsip.com');
