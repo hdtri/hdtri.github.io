@@ -1,4 +1,4 @@
-var options = {
+/*var options = {
       media: {
         local: {
           video: document.getElementById('localVideo')
@@ -11,4 +11,15 @@ var options = {
       },
       ua: {}
     };
+*/    
 // var simple = new SIP.Web.Simple(options);
+function openStream() {
+	const config ={ audio: false, video: true};
+	return navigator.mediaDevices.getUserMedia(config);
+}
+
+function playStream(idVideoTag, stream) {
+	const video = document.getElementById(idVideoTag);
+	video.srcObject = stream;
+	video.play();
+}
