@@ -1,4 +1,4 @@
-var socket = new JsSIP.WebSocketInterface('wss://trihdrtc.tk');
+var socket = new JsSIP.WebSocketInterface('wss://trihdrtc.tk:7443');
 var configuration = {
   sockets  : [ socket ],
   uri      : 'sip:1004@192.168.0.151',
