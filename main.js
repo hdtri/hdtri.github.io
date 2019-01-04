@@ -2,7 +2,8 @@
 
 // On this codelab, you will be streaming only video (video: true).
 const mediaStreamConstraints = {
-  video: true,
+  video: false,
+  audio: true,
 };
 
 // Video element where stream will be placed.
