@@ -90,8 +90,8 @@ function createSimple(callerURI, displayName, target, remoteVideo, buttonId) {
 
     button.addEventListener('click', function() {
         // No current call up
-        if (simple.state === SIP.WebRTC.Simple.C.STATUS_NULL ||
-            simple.state === SIP.WebRTC.Simple.C.STATUS_COMPLETED) {
+        if (simple.state === SIP.Web.Simple.C.STATUS_NULL ||
+            simple.state === SIP.Web.Simple.C.STATUS_COMPLETED) {
             simple.call(target);
         } else {
             simple.hangup();
