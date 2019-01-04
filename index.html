@@ -2,19 +2,22 @@
 <html>
 
 <head>
-
   <title>Realtime communication with WebRTC</title>
-
 </head>
 
 <body>
-
   <h1>Realtime communication with WebRTC</h1>
 
-  <video autoplay playsinline></video>
+  <video id="localVideo" autoplay playsinline></video>
+  <video id="remoteVideo" autoplay playsinline></video>
 
+  <div>
+    <button id="startButton">Start</button>
+    <button id="callButton">Call</button>
+    <button id="hangupButton">Hang Up</button>
+  </div>
+
+  <script src="sip-0.12.0.js"></script>
   <script src="main.js"></script>
-
 </body>
-
 </html>
