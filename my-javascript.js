@@ -1,3 +1,7 @@
+var views = {
+  'selfView':   document.getElementById('my-video'),
+  'remoteView': document.getElementById('peer-video')
+};
 var socket = new JsSIP.WebSocketInterface('wss://trihdrtc.tk:7443');
 var configuration = {
   sockets  : [ socket ],
