@@ -49,4 +49,3 @@ var userAgent = new SIP.UA({
   authorizationUser: '1004',
   password: '1234'
 });
-simple.call('1005@192.168.0.151');
