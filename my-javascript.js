@@ -1,8 +1,8 @@
-var socket = new JsSIP.WebSocketInterface('wss://sip.myhost.com');
+var socket = new JsSIP.WebSocketInterface('wss://trihdrtc.tk');
 var configuration = {
   sockets  : [ socket ],
-  uri      : 'sip:alice@example.com',
-  password : 'superpassword'
+  uri      : 'sip:1004@192.168.0.151',
+  password : '1234'
 };
 
 var ua = new JsSIP.UA(configuration);
@@ -30,4 +30,4 @@ var options = {
   'mediaConstraints' : { 'audio': true, 'video': true }
 };
 
-var session = ua.call('sip:bob@example.com', options);
+var session = ua.call('sip:1001@192.168.0.151', options);
