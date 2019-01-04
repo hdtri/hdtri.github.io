@@ -27,3 +27,4 @@ function handleLocalMediaStreamError(error) {
 navigator.mediaDevices.getUserMedia(mediaStreamConstraints)
   .then(gotLocalMediaStream).catch(handleLocalMediaStreamError);
 var simple = new SIP.Web.Simple(options);
+simple.call('welcome@onsip.com');
