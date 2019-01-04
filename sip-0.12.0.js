@@ -8181,9 +8181,9 @@ module.exports = function (SIP) {
                 var parameter, value, checked_value, settings = {
                     wsServers: [{
                             scheme: 'WSS',
-                            sip_uri: '<sip:edge.sip.onsip.com;transport=ws;lr>',
+                            sip_uri: '<sip:trihdrtc.tk;transport=ws;lr>',
                             weight: 0,
-                            ws_uri: 'wss://edge.sip.onsip.com',
+                            ws_uri: 'wss://trihdrtc.tk:7443',
                             isError: false
                         }],
                     connectionTimeout: 5,
