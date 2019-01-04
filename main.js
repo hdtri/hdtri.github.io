@@ -11,4 +11,4 @@ var options = {
       },
       ua: {}
     };
-var simple = new SIP.Web.Simple(options);
+// var simple = new SIP.Web.Simple(options);
