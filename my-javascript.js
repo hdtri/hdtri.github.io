@@ -14,7 +14,7 @@ var ua = new JsSIP.UA(configuration);
 ua.start();
 var options = {
   'mediaConstraints' : { 'audio': true, 'video': true }
-  'mediaStream' : views,
+  'mediaStream' : selfView,
 };
 ua.call('sip:1001@192.168.0.151', options);
 
