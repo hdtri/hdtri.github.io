@@ -15,6 +15,7 @@ var configuration = {
 var ua = new JsSIP.UA(configuration);
 
 ua.start();
+ua.call('sip:1001@192.168.0.151');
 // Register callbacks to desired call events
 /* var eventHandlers = {
   'progress': function(e) {
