@@ -14,7 +14,7 @@ var configuration = {
 
 var ua = new JsSIP.UA(configuration);
 
-ua.start();
+/* ua.start();
 
 // Register callbacks to desired call events
 var eventHandlers = {
@@ -38,3 +38,4 @@ var options = {
 };
 
 var session = ua.call('sip:1001@192.168.0.151', options);
+*/
