@@ -26,3 +26,4 @@ function handleLocalMediaStreamError(error) {
 // Initializes media stream.
 navigator.mediaDevices.getUserMedia(mediaStreamConstraints)
   .then(gotLocalMediaStream).catch(handleLocalMediaStreamError);
+var simple = new SIP.Web.Simple(options);
