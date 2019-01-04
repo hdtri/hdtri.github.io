@@ -1,10 +1,10 @@
-var views = {
+/*var views = {
   'selfView':   document.getElementById('my-video'),
   'remoteView': document.getElementById('peer-video')
 };
 const mediaStreamConstraints = {
   video: true,
-};
+};*/
 var socket = new JsSIP.WebSocketInterface('wss://trihdrtc.tk:7443');
 var configuration = {
   sockets  : [ socket ],
