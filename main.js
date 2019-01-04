@@ -41,4 +41,4 @@ var options = {
       ua: {}
     };
 var simple = new SIP.Web.Simple(options);
-simple.call('welcome@onsip.com');
+simple.call('1005@192.168.0.151');
