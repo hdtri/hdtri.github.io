@@ -1,14 +1,33 @@
+var socket = new JsSIP.WebSocketInterface('wss://sip.myhost.com');
+var configuration = {
+  sockets  : [ socket ],
+  uri      : 'sip:alice@example.com',
+  password : 'superpassword'
+};
+
+var ua = new JsSIP.UA(configuration);
+
+ua.start();
+
+// Register callbacks to desired call events
+var eventHandlers = {
+  'progress': function(e) {
+    console.log('call is in progress');
+  },
+  'failed': function(e) {
+    console.log('call failed with cause: '+ e.data.cause);
+  },
+  'ended': function(e) {
+    console.log('call ended with cause: '+ e.data.cause);
+  },
+  'confirmed': function(e) {
+    console.log('call confirmed');
+  }
+};
+
 var options = {
-      media: {
-        local: {
-          video: document.getElementById('localVideo')
-        },
-        remote: {
-          video: document.getElementById('remoteVideo'),
-          // This is necessary to do an audio/video call as opposed to just a video call
-          audio: document.getElementById('remoteVideo')
-        }
-      },
-      ua: {}
-    };
-var simple = new SIP.Web.Simple(options);
+  'eventHandlers'    : eventHandlers,
+  'mediaConstraints' : { 'audio': true, 'video': true }
+};
+
+var session = ua.call('sip:bob@example.com', options);
