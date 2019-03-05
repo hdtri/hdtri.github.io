@@ -32,7 +32,8 @@ function huy_dangky () {
     userAgent.unregister();
 }
 function goira () {
-    const session = userAgent.invite('1001@192.168.0.151', options);
+    var sip_phone_number_ = document.getElementById("sip_phone_number").value.toString();
+    const session = userAgent.invite(sip_phone_number_, options);
     session.on('trackAdded', function () {
         // We need to check the peer connection to determine which track was added
 
@@ -57,15 +58,59 @@ function goira () {
     goira.ketthuc = function () {
         session.terminate();
     };
-    var tones = '3';
+    var tones_1 = '1';
+    var tones_2 = '2';
+    var tones_3 = '3';
+    var tones_4 = '4';
+    var tones_5 = '5';
+    var tones_6 = '6';
+    var tones_7 = '7';
+    var tones_8 = '8';
+    var tones_9 = '9';
+    var tones_0 = '0';
+    var tones_sao = '*';
+    var tones_thang = '#';
     var extraHeaders = [ 'X-Foo: foo', 'X-Bar: bar' ];
     var options_dtmf = {
         'duration': 160,
         'interToneGap': 1200,
         'extraHeaders': extraHeaders
     };
-    goira.dtmf = function () {
-        session.dtmf(tones, options_dtmf);
+    goira.dtmf_1 = function () {
+        session.dtmf(tones_1, options_dtmf);
+    }
+    goira.dtmf_2 = function () {
+        session.dtmf(tones_2, options_dtmf);
+    }
+    goira.dtmf_3 = function () {
+        session.dtmf(tones_3, options_dtmf);
+    }
+    goira.dtmf_4 = function () {
+        session.dtmf(tones_4, options_dtmf);
+    }
+    goira.dtmf_5 = function () {
+        session.dtmf(tones_5, options_dtmf);
+    }
+    goira.dtmf_6 = function () {
+        session.dtmf(tones_6, options_dtmf);
+    }
+    goira.dtmf_7 = function () {
+        session.dtmf(tones_7, options_dtmf);
+    }
+    goira.dtmf_8 = function () {
+        session.dtmf(tones_8, options_dtmf);
+    }
+    goira.dtmf_9 = function () {
+        session.dtmf(tones_9, options_dtmf);
+    }
+    goira.dtmf_0 = function () {
+        session.dtmf(tones_0, options_dtmf);
+    }
+    goira.dtmf_sao = function () {
+        session.dtmf(tones_sao, options_dtmf);
+    }
+    goira.dtmf_thang = function () {
+        session.dtmf(tones_thang, options_dtmf);
     }
 }
 userAgent.start();

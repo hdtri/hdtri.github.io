@@ -1,15 +1,53 @@
 <html>
-<body>
-
-	<video id="remoteVideo"></video>
-	<video id="localVideo" muted="muted"></video>
-	<button onclick="dangky()"> Register </button>
-	<button onclick="huy_dangky()"> unRegister </button>
-	<button onclick="goira()"> Call </button>
-	<button onclick="answer()"> Answer </button>
-	<button onclick="goira.ketthuc()"> Terminate </button>
-	<button onclick="goira.dtmf()"> Press 3 </button>
+<head>
+	<title>iVoice Webphone</title>
 	<script src='sip-0.13.6.min.js'></script>
+
+</head>
+<body>
+	<div>
+		<tr>
+			<td class="td_label"  align="right"><label class="input_label" for="sip_phone_number">SIP Phone Info:</label></td>
+			<td><input style="width:250px" id="sip_phone_number" type="text" placeholder="extension or external phone number"></td>
+		</tr>
+	</div>
+	<div>
+		<button onclick="dangky()"> Register </button>
+		<button onclick="huy_dangky()"> unRegister </button>
+		<button onclick="goira()"> Call </button>
+		<button onclick="answer()"> Answer </button>
+		<button onclick="goira.ketthuc()"> Terminate </button>
+	</div>
+	<div>
+		<table>
+			<tr>
+				<td> <button onclick="goira.dtmf_1()"> 1 </button> </td>
+				<td> <button onclick="goira.dtmf_2()"> 2 </button> </td>
+				<td> <button onclick="goira.dtmf_3()"> 3 </button> </td>
+			</tr>
+			<tr>
+				<td> <button onclick="goira.dtmf_4()"> 4 </button> </td>
+				<td> <button onclick="goira.dtmf_5()"> 5 </button> </td>
+				<td> <button onclick="goira.dtmf_6()"> 6 </button> </td>
+			</tr>
+			<tr>
+				<td> <button onclick="goira.dtmf_7()"> 7 </button> </td>
+				<td> <button onclick="goira.dtmf_8()"> 8 </button> </td>
+				<td> <button onclick="goira.dtmf_9()"> 9 </button> </td>
+			</tr>
+			<tr>
+				<td> <button onclick="goira.dtmf_sao()"> * </button> </td>
+				<td> <button onclick="goira.dtmf_0()"> 0 </button> </td>
+				<td> <button onclick="goira.dtmf_thang()"> # </button> </td>
+			</tr>
+		</table>
+
+	</div>
+	<div>
+		<video id="remoteVideo"></video>
+		<video id="localVideo" muted="muted"></video>
+	</div>
+
 	<script src="main.js"></script>
 </body>
 </html>
