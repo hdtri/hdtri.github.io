@@ -1,17 +1,18 @@
 const remoteVideo = document.getElementById('remoteVideo');
 const localVideo = document.getElementById('localVideo');
-
+var password
 const userAgent = new SIP.UA({
     uri: '1004@192.168.0.151',
     transportOptions: {
-        wsServers: ['wss://trihdrtc.tk:7443'],
-        traceSip: true
+        wsServers: ['wss://trihdrtc.tk:7443']
     },
     authorizationUser: '1004',
     password: '1234',
     dtmfType: SIP.C.dtmfType.RTP,
     hackWssInTransport: true,
-    register: false
+    userAgentString: "iVoice WebPhone",
+    displayName: 'TriHD3',
+    autostop: false
 });
 
 var options = {
@@ -33,6 +34,8 @@ function huy_dangky () {
 }
 function goira () {
     var sip_phone_number_ = document.getElementById("sip_phone_number").value.toString();
+    var modal3 = document.getElementById('myModal_3');
+    modal3.style.display = "block";
     const session = userAgent.invite(sip_phone_number_, options);
     session.on('trackAdded', function () {
         // We need to check the peer connection to determine which track was added
@@ -57,7 +60,12 @@ function goira () {
     });
     goira.ketthuc = function () {
         session.terminate();
+        modal3.style.display = "none";
     };
+    session.on('bye', function() {
+        modal3.style.display = "none";
+    });
+    /* DTMF */
     var tones_1 = '1';
     var tones_2 = '2';
     var tones_3 = '3';
@@ -113,20 +121,98 @@ function goira () {
         session.dtmf(tones_thang, options_dtmf);
     }
 }
-userAgent.start();
+
 userAgent.on('invite', function (session) {
-    session.accept(options);
-    session.on('trackAdded', function() {
-        // We need to check the peer connection to determine which track was added
+    var x = document.getElementById("myAudio");
+    x.play();
+    var modal = document.getElementById('myModal');
+    var modal2 = document.getElementById('myModal_2');
+    var span = document.getElementsByClassName("close")[0];
+    var ans = document.getElementById("ansBtn");
+    var rej = document.getElementById("rejBtn");
+    var ter = document.getElementById("terBtn");
+    var calling_number = session.remoteIdentity.displayName;
+    document.getElementById("calling_number_prompt").innerHTML = calling_number + ' đang gọi cho bạn';
+    document.getElementById("calling_number").innerHTML = calling_number;
+    console.info(calling_number, 'Is calling you');
+    modal.style.display = "block";
+    span.onclick = function() {
+        modal.style.display = "none";
+        x.pause();
+        var option_reject = {
+            statusCode: 486
+        };
+        session.reject(option_reject);
+        console.info('*********Reject call*********');
+    };
+    ans.onclick = function() {
+        x.pause();
+        modal.style.display = "none";
+        modal2.style.display = "block";
+        session.accept(options);
+        session.on('trackAdded', function() {
+            // We need to check the peer connection to determine which track was added
 
-        var pc = session.sessionDescriptionHandler.peerConnection;
+            var pc = session.sessionDescriptionHandler.peerConnection;
 
-        // Gets remote tracks
-        var remoteStream = new MediaStream();
-        pc.getReceivers().forEach(function(receiver) {
-            remoteStream.addTrack(receiver.track);
+            // Gets remote tracks
+            var remoteStream = new MediaStream();
+            pc.getReceivers().forEach(function(receiver) {
+                remoteStream.addTrack(receiver.track);
+            });
+            remoteVideo.srcObject = remoteStream;
+            remoteVideo.play();
         });
-        remoteVideo.srcObject = remoteStream;
-        remoteVideo.play();
+    };
+    rej.onclick = function() {
+        x.pause();
+        modal.style.display = "none";
+        var option_reject = {
+            statusCode: 486
+        };
+        session.reject(option_reject);
+        console.info('*********Reject call*********');
+        modal.style.display = "none";
+    };
+    ter.onclick = function () {
+        session.terminate();
+        modal2.style.display = "none";
+    };
+    session.on('cancel', function() {
+        x.pause();
+        modal.style.display = "none";
     });
+    session.on('bye', function() {
+        modal2.style.display = "none";
+    });
+
+/*   window.onclick = function(event) {
+        if (event.target == modal) {
+            modal.style.display = "none";
+        }
+    }
+/*    if (confirm("Co cuoc goi den")) {
+        x.pause();
+        session.accept(options);
+        session.on('trackAdded', function() {
+            // We need to check the peer connection to determine which track was added
+
+            var pc = session.sessionDescriptionHandler.peerConnection;
+
+            // Gets remote tracks
+            var remoteStream = new MediaStream();
+            pc.getReceivers().forEach(function(receiver) {
+                remoteStream.addTrack(receiver.track);
+            });
+            remoteVideo.srcObject = remoteStream;
+            remoteVideo.play();
+        });
+    } else {
+        x.pause();
+        var option_reject = {
+            statusCode: 486
+        };
+        session.reject(option_reject);
+        console.info('*********Reject call*********');
+        }*/
 });

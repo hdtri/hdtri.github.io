@@ -1,53 +1,147 @@
 <html>
 <head>
 	<title>iVoice Webphone</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
 	<script src='sip-0.13.6.min.js'></script>
+    <style>
+        body {font-family: Arial, Helvetica, sans-serif;}
 
+        /* The Modal (background) */
+        .modal {
+            display: none; /* Hidden by default */
+            position: fixed; /* Stay in place */
+            z-index: 1; /* Sit on top */
+            padding-top: 100px; /* Location of the box */
+            left: 0;
+            top: 0;
+            width: 100%; /* Full width */
+            height: 100%; /* Full height */
+            overflow: auto; /* Enable scroll if needed */
+            background-color: rgb(0,0,0); /* Fallback color */
+            background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+        }
+
+        /* Modal Content */
+        .modal-content {
+            background-color: #e6f2ff;
+            margin: auto;
+            padding: 10px;
+            border: 1px solid #888;
+            width: 70%;
+        }
+
+        /* The Close Button */
+        .close {
+            color: #aaaaaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+        }
+
+        .close:hover,
+        .close:focus {
+            color: #000;
+            text-decoration: none;
+            cursor: pointer;
+        }
+    </style>
 </head>
 <body>
-	<div>
+	<audio id="myAudio">
+		<source src="xiaomi_ringtone.mp3" type="audio/mpeg">
+	</audio>
+    <div id="myModal" class="modal">
+
+        <!-- Modal content -->
+        <div class="modal-content">
+			<span class="close">&times;</span>
+			<b><h id="calling_number_prompt"></h></b>
+			<div align="right"	>
+				<button type="button" class="btn btn-primary" id="ansBtn"> Nghe máy </button>
+				<button type="button" class="btn btn-danger" id="rejBtn"> Từ chối </button>
+			</div>
+        </div>
+    </div>
+    <div id="myModal_2" class="modal">
+
+        <!-- Modal content -->
+        <div class="modal-content" align="center">
+			<!-- <table align="center">
+				<tr>
+					<td> <button onclick="goira.dtmf_1()" type="button" class="btn btn-primary btn-lg"> 1 </button> </td>
+					<td> <button onclick="goira.dtmf_2()" type="button" class="btn btn-primary btn-lg"> 2 </button> </td>
+					<td> <button onclick="goira.dtmf_3()" type="button" class="btn btn-primary btn-lg"> 3 </button> </td>
+				</tr>
+				<tr>
+					<td> <button onclick="goira.dtmf_4()" type="button" class="btn btn-primary btn-lg"> 4 </button> </td>
+					<td> <button onclick="goira.dtmf_5()" type="button" class="btn btn-primary btn-lg"> 5 </button> </td>
+					<td> <button onclick="goira.dtmf_6()" type="button" class="btn btn-primary btn-lg"> 6 </button> </td>
+				</tr>
+				<tr>
+					<td> <button onclick="goira.dtmf_7()" type="button" class="btn btn-primary btn-lg"> 7 </button> </td>
+					<td> <button onclick="goira.dtmf_8()" type="button" class="btn btn-primary btn-lg"> 8 </button> </td>
+					<td> <button onclick="goira.dtmf_9()" type="button" class="btn btn-primary btn-lg"> 9 </button> </td>
+				</tr>
+				<tr>
+					<td> <button onclick="goira.dtmf_sao()" type="button" class="btn btn-danger btn-lg"> * </button> </td>
+					<td> <button onclick="goira.dtmf_0()" type="button" class="btn btn-primary btn-lg"> 0 </button> </td>
+					<td> <button onclick="goira.dtmf_thang()" type="button" class="btn btn-danger btn-lg"> # </button> </td>
+				</tr>
+			</table> -->
+			<b><h id="calling_number"></h></b>
+			<h1>Hello</h1>
+			<button type="button" class="btn btn-danger" id="terBtn"> Ngắt máy </button>
+        </div>
+    </div>
+	<div id="myModal_3" class="modal">
+
+		<!-- Modal content -->
+		<div class="modal-content" align="center">
+			<table align="center">
+				<tr>
+					<td> <button onclick="goira.dtmf_1()" type="button" class="btn btn-primary btn-lg"> 1 </button> </td>
+					<td> <button onclick="goira.dtmf_2()" type="button" class="btn btn-primary btn-lg"> 2 </button> </td>
+					<td> <button onclick="goira.dtmf_3()" type="button" class="btn btn-primary btn-lg"> 3 </button> </td>
+				</tr>
+				<tr>
+					<td> <button onclick="goira.dtmf_4()" type="button" class="btn btn-primary btn-lg"> 4 </button> </td>
+					<td> <button onclick="goira.dtmf_5()" type="button" class="btn btn-primary btn-lg"> 5 </button> </td>
+					<td> <button onclick="goira.dtmf_6()" type="button" class="btn btn-primary btn-lg"> 6 </button> </td>
+				</tr>
+				<tr>
+					<td> <button onclick="goira.dtmf_7()" type="button" class="btn btn-primary btn-lg"> 7 </button> </td>
+					<td> <button onclick="goira.dtmf_8()" type="button" class="btn btn-primary btn-lg"> 8 </button> </td>
+					<td> <button onclick="goira.dtmf_9()" type="button" class="btn btn-primary btn-lg"> 9 </button> </td>
+				</tr>
+				<tr>
+					<td> <button onclick="goira.dtmf_sao()" type="button" class="btn btn-danger btn-lg"> * </button> </td>
+					<td> <button onclick="goira.dtmf_0()" type="button" class="btn btn-primary btn-lg"> 0 </button> </td>
+					<td> <button onclick="goira.dtmf_thang()" type="button" class="btn btn-danger btn-lg"> # </button> </td>
+				</tr>
+			</table>
+			<button type="button" class="btn btn-danger" onclick="goira.ketthuc()"> Kết thúc cuộc gọi </button>
+		</div>
+	</div>
+	<div align="center">
 		<tr>
-			<td class="td_label"  align="right"><label class="input_label" for="sip_phone_number">Phone Number:</label></td>
 			<td><input style="width:250px" id="sip_phone_number" type="text" placeholder="extension or external phone number"></td>
 		</tr>
 	</div>
-	<div>
-		<button onclick="dangky()"> Register </button>
-		<button onclick="huy_dangky()"> unRegister </button>
-		<button onclick="goira()"> Call </button>
-		<button onclick="answer()"> Answer </button>
-		<button onclick="goira.ketthuc()"> Terminate </button>
-	</div>
-	<div>
-		<table>
-			<tr>
-				<td> <button onclick="goira.dtmf_1()"> 1 </button> </td>
-				<td> <button onclick="goira.dtmf_2()"> 2 </button> </td>
-				<td> <button onclick="goira.dtmf_3()"> 3 </button> </td>
-			</tr>
-			<tr>
-				<td> <button onclick="goira.dtmf_4()"> 4 </button> </td>
-				<td> <button onclick="goira.dtmf_5()"> 5 </button> </td>
-				<td> <button onclick="goira.dtmf_6()"> 6 </button> </td>
-			</tr>
-			<tr>
-				<td> <button onclick="goira.dtmf_7()"> 7 </button> </td>
-				<td> <button onclick="goira.dtmf_8()"> 8 </button> </td>
-				<td> <button onclick="goira.dtmf_9()"> 9 </button> </td>
-			</tr>
-			<tr>
-				<td> <button onclick="goira.dtmf_sao()"> * </button> </td>
-				<td> <button onclick="goira.dtmf_0()"> 0 </button> </td>
-				<td> <button onclick="goira.dtmf_thang()"> # </button> </td>
-			</tr>
-		</table>
-
+	<div align="center">
+		</br>
+<!--		<button type="button" class="btn btn-primary" onclick="dangky()"> Đăng ký </button>
+		<button type="button" class="btn btn-primary" onclick="huy_dangky()"> Hủy đăng ký </button> -->
+		<button type="button" class="btn btn-primary" onclick="goira()"> Gọi </button>
 	</div>
 	<div>
 		<video id="remoteVideo"></video>
 		<video id="localVideo" muted="muted"></video>
 	</div>
-
 	<script src="main.js"></script>
 </body>
 </html>
