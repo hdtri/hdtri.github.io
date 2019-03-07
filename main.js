@@ -4,7 +4,8 @@ var password
 const userAgent = new SIP.UA({
     uri: '1004@192.168.0.151',
     transportOptions: {
-        wsServers: ['wss://trihdrtc.tk:7443']
+        wsServers: ['wss://trihdrtc.tk:7443'],
+        traceSip: true
     },
     authorizationUser: '1004',
     password: '1234',
@@ -12,7 +13,7 @@ const userAgent = new SIP.UA({
     hackWssInTransport: true,
     userAgentString: "iVoice WebPhone",
     displayName: 'TriHD3',
-    autostop: false
+    autostop: false,
 });
 
 var options = {
@@ -65,6 +66,9 @@ function goira () {
     session.on('bye', function() {
         modal3.style.display = "none";
     });
+    session.on('failed', function() {
+        modal3.style.display = "none";
+    });
     /* DTMF */
     var tones_1 = '1';
     var tones_2 = '2';
@@ -97,7 +101,7 @@ function goira () {
         session.dtmf(tones_4, options_dtmf);
     }
     goira.dtmf_5 = function () {
-        session.dtmf(tones_5, options_dtmf);
+        session.dtmf('5', options_dtmf);
     }
     goira.dtmf_6 = function () {
         session.dtmf(tones_6, options_dtmf);
@@ -124,6 +128,7 @@ function goira () {
 
 userAgent.on('invite', function (session) {
     var x = document.getElementById("myAudio");
+    x.play();
     x.play();
     var modal = document.getElementById('myModal');
     var modal2 = document.getElementById('myModal_2');
@@ -184,6 +189,9 @@ userAgent.on('invite', function (session) {
     });
     session.on('bye', function() {
         modal2.style.display = "none";
+    });
+    session.on('failed', function() {
+        modal.style.display = "none";
     });
 
 /*   window.onclick = function(event) {
