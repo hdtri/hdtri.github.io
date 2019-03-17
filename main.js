@@ -22,7 +22,8 @@ var options = {
             audio: true,
             video: false
         }
-    }
+    },
+    inviteWithoutSdp: true
 };
 function dangky () {
     userAgent.register();
