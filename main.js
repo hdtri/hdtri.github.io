@@ -2,13 +2,13 @@ const remoteVideo = document.getElementById('remoteVideo');
 const localVideo = document.getElementById('localVideo');
 var password
 const userAgent = new SIP.UA({
-    uri: '1004@192.168.0.151',
+    uri: '1004@192.168.0.112',
     transportOptions: {
         wsServers: ['wss://trihdrtc.tk:7443'],
         traceSip: true
     },
     authorizationUser: '1004',
-    password: '1234',
+    password: 'Lm5oFiR%nS',
     dtmfType: SIP.C.dtmfType.RTP,
     hackWssInTransport: true,
     userAgentString: "iVoice WebPhone",
