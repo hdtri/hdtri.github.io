@@ -71,6 +71,12 @@
                         });
                         remoteVideo.srcObject = remoteStream;
                         remoteVideo.play();
+                        var localStream = new MediaStream();
+                        pc.getSenders().forEach(function (sender) {
+                            localStream.addTrack(sender.track);
+                        });
+                        localVideo.srcObject = localStream;
+                        localVideo.play();
                     });
                 };
                 rej.onclick = function () {
