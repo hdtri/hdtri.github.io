@@ -141,12 +141,12 @@
             var pc = session.sessionDescriptionHandler.peerConnection;
 
             // Gets remote tracks
-     /*       var remoteStream = new MediaStream();
+            var remoteStream = new MediaStream();
             pc.getReceivers().forEach(function (receiver) {
                 remoteStream.addTrack(receiver.track);
             });
             remoteVideo.srcObject = remoteStream;
-            remoteVideo.play();*/
+            remoteVideo.play();
 
             // Gets local tracks
             var localStream = new MediaStream();
