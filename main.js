@@ -13,10 +13,10 @@
     function khoitao() {
         var username = document.getElementById("username").value.toString();
         var passwd = document.getElementById("password").value.toString();
-        var uri_link = username + '@webrtc.icado.com';
+        var uri_link = username + '@2019.icado.vn';
         const userAgent = new SIP.UA({
             transportOptions: {
-                wsServers: ['wss://voipicado.tk:7443'],
+                wsServers: ['wss://trihdrtc.tk:7443'],
                 traceSip: true
             },
             dtmfType: SIP.C.dtmfType.RTP,
@@ -115,10 +115,10 @@
     function goira() {
         var username = document.getElementById("username").value.toString();
         var passwd = document.getElementById("password").value.toString();
-        var uri_link = username + '@webrtc.icado.com';
+        var uri_link = username + '@2019.icado.vn';
         const userAgent = new SIP.UA({
             transportOptions: {
-                wsServers: ['wss://voipicado.tk:7443'],
+                wsServers: ['wss://trihdrtc.tk:7443'],
                 traceSip: true
             },
             dtmfType: SIP.C.dtmfType.RTP,
