@@ -4,7 +4,7 @@
         sessionDescriptionHandlerOptions: {
             constraints: {
                 audio: true,
-                video: false
+                video: true
             }
         },
         //inviteWithoutSdp: true,
