@@ -27,8 +27,7 @@
             uri: uri_link,
             registerOptions: {
                 expires: 600
-            },
-            hackIpInContact: true,
+            },          
             password: passwd,
             authorizationUser: username
         });
@@ -133,8 +132,7 @@
             autostop: false,
             uri: uri_link,
             password: passwd,
-            register: false,
-            hackIpInContact: true,
+            register: false,           
             authorizationUser: username
         });
         var sip_phone_number_ = document.getElementById("sip_phone_number").value.toString();
