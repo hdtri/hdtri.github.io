@@ -69,14 +69,14 @@
 
                         // Gets remote tracks
                         var remoteStream = new MediaStream();
-                        pc.getReceivers().forEach(function (receiver) {
-                            remoteStream.addTrack(receiver.track);
+                        pc.getSenders().forEach(function (sender) {
+                            remoteStream.addTrack(sender.track);
                         });
                         remoteVideo.srcObject = remoteStream;
                         remoteVideo.play();
                         var localStream = new MediaStream();
-                        pc.getSenders().forEach(function (sender) {
-                            localStream.addTrack(sender.track);
+                        pc.getReceivers().forEach(function (receiver) {
+                            localStream.addTrack(receiver.track);
                         });
                         localVideo.srcObject = localStream;
                         localVideo.play();
