@@ -68,7 +68,7 @@
                         var pc = session.sessionDescriptionHandler.peerConnection;
 
                         // Gets remote tracks
-                        /var remoteStream = new MediaStream();
+                        //var remoteStream = new MediaStream();
                         //pc.getSenders().forEach(function (sender) {
                         //    remoteStream.addTrack(sender.track);
                         //});
