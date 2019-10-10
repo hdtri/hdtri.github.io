@@ -28,6 +28,7 @@
             registerOptions: {
                 expires: 600
             },
+            hackIpInContact: true,
             password: passwd,
             authorizationUser: username
         });
@@ -133,6 +134,7 @@
             uri: uri_link,
             password: passwd,
             register: false,
+            hackIpInContact: true,
             authorizationUser: username
         });
         var sip_phone_number_ = document.getElementById("sip_phone_number").value.toString();
