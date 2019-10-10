@@ -25,6 +25,7 @@
             displayName: 'TriHD3',
             autostop: false,
             uri: uri_link,
+            expires: 3000,
             password: passwd,
             authorizationUser: username
         });
