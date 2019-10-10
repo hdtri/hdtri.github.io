@@ -65,30 +65,22 @@
                     session.on('trackAdded', function () {
                         // We need to check the peer connection to determine which track was added
 
-                        var pc = session.sessionDescriptionHandler.peerConnection;
-
-                        // Gets remote tracks
-                        //var remoteStream = new MediaStream();
-                        //pc.getSenders().forEach(function (sender) {
-                        //    remoteStream.addTrack(sender.track);
-                        //});
-                        //remoteVideo.srcObject = remoteStream;
-                        //remoteVideo.play();
+                        var pc = session.sessionDescriptionHandler.peerConnection;    
                         
-                        var desc = new RTCSessionDescription(sdp);
-                        pc.setRemoteDescription(desc).then(function () {
-                            return navigator.mediaDevices.getUserMedia(mediaConstraints);
-                        })
-                            .then(function(stream) {
-                            remoteVideo.srcObject = stream;
-                            stream.getTracks().forEach(track => pc.addTrack(track, stream));
-                        })
                         var localStream = new MediaStream();
                         pc.getReceivers().forEach(function (receiver) {
                             localStream.addTrack(receiver.track);
                         });
                         localVideo.srcObject = localStream;
                         localVideo.play();
+                        
+                        // Gets remote tracks
+                        var remoteStream = new MediaStream();
+                        pc.getSenders().forEach(function (sender) {
+                            remoteStream.addTrack(sender.track);
+                        });
+                        remoteVideo.srcObject = remoteStream;
+                        remoteVideo.play();
                     });
                 };
                 rej.onclick = function () {
