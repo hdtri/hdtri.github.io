@@ -26,7 +26,7 @@
             autostop: false,
             uri: uri_link,
             registerOptions: {
-                expires: no
+                expires: 10
             },
             password: passwd,
             authorizationUser: username
