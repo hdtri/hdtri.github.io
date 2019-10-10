@@ -62,7 +62,7 @@
                     modal.style.display = "none";
                     modal2.style.display = "block";
                     session.accept(options);
-                    session.on('trackAdded', function () {
+                    session.on('iceConnectionConnected', function () {
                         // We need to check the peer connection to determine which track was added
 
                         var pc = session.sessionDescriptionHandler.peerConnection;    
@@ -75,12 +75,12 @@
                         localVideo.play();
                         
                         // Gets remote tracks
-                        //var remoteStream = new MediaStream();
-                        //pc.getSenders().forEach(function (sender) {
-                        //    remoteStream.addTrack(sender.track);
-                        //});
-                        //remoteVideo.srcObject = remoteStream;
-                        //remoteVideo.play();
+                        var remoteStream = new MediaStream();
+                        pc.getSenders().forEach(function (sender) {
+                            remoteStream.addTrack(sender.track);
+                        });
+                        remoteVideo.srcObject = remoteStream;
+                        remoteVideo.play();
                     });
                 };
                 rej.onclick = function () {
