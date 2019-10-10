@@ -75,12 +75,12 @@
                         localVideo.play();
                         
                         // Gets remote tracks
-                        var remoteStream = new MediaStream();
-                        pc.getSenders().forEach(function (sender) {
-                            remoteStream.addTrack(sender.track);
-                        });
-                        remoteVideo.srcObject = remoteStream;
-                        remoteVideo.play();
+                        //var remoteStream = new MediaStream();
+                        //pc.getSenders().forEach(function (sender) {
+                        //    remoteStream.addTrack(sender.track);
+                        //});
+                        //remoteVideo.srcObject = remoteStream;
+                        //remoteVideo.play();
                     });
                 };
                 rej.onclick = function () {
